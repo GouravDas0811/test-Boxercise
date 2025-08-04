@@ -187,7 +187,7 @@ const MembershipPage = () => {
               whileHover={{ y: -5 }}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-yellow-500 text-black px-3 py-1 rounded-bl-xl rounded-tr-xl text-xs font-semibold">
+                <div className="absolute top-0 right-0 bg-yellow-500 text-black px-3 py-1 rounded-bl-xl text-xs font-semibold">
                   Most Popular
                 </div>
               )}

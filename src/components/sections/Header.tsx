@@ -95,9 +95,6 @@ useEffect(() => {
                   >
                     {isAdmin ? 'Admin Panel' : 'Dashboard'}
                   </Link>
-                  <Link href="/profile" className="block px-4 py-2 hover:bg-gray-100">
-                    Profile
-                  </Link>
                   <button
                     onClick={() => signOut()}
                     className="w-full text-left px-4 py-2 hover:bg-red-100 text-red-600"
@@ -109,12 +106,11 @@ useEffect(() => {
             </>
           ) : (
             <>
-              <button
-                onClick={() => signIn("google")}
-                className="bg-white text-black px-4 py-2 rounded-full shadow-md hover:bg-gray-200 hover:scale-105 transition cursor-pointer"
-              >
-                Login with Google
-              </button>
+             <Link href="/login">
+                <button className="text-white bg-red-600 px-4 py-2 rounded-full shadow-md hover:scale-105 transition cursor-pointer">
+                  Sign Up
+                </button>
+              </Link>
               <Link href="/signup">
                 <button className="text-white bg-red-600 px-4 py-2 rounded-full shadow-md hover:scale-105 transition cursor-pointer">
                   Sign Up
