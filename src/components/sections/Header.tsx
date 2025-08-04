@@ -108,7 +108,7 @@ useEffect(() => {
             <>
              <Link href="/login">
                 <button className="text-white bg-red-600 px-4 py-2 rounded-full shadow-md hover:scale-105 transition cursor-pointer">
-                  Sign Up
+                  Sign In
                 </button>
               </Link>
               <Link href="/signup">
