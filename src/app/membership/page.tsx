@@ -144,7 +144,7 @@ const MembershipPage = () => {
   ];
 
   return (
-    <section className="min-h-screen bg-[#020817] text-white px-4 pt-28 pb-16">
+    <section className="min-h-screen bg-[#020817] text-white px-4 pt-15 pb-16">
       <div className="max-w-6xl py-5 mx-auto text-center">
         <TrialBookingModal
           isOpen={isModalOpen}

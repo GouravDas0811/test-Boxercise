@@ -9,8 +9,9 @@ import 'swiper/css/pagination';
 
 
 export const metadata: Metadata = {
-  title: 'My App',
-  description: 'NextAuth Example',
+  title: 'Boxercise- Train Smart, Evolve Strong',
+  description: 'Fitness, Boxing, and Yoga, Nutrition consultancy',
+  icons: "/favicon.ico" 
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
