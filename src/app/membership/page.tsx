@@ -187,7 +187,7 @@ const MembershipPage = () => {
               whileHover={{ y: -5 }}
             >
               {plan.popular && (
-                <div className="absolute top-0 right-0 bg-yellow-500 text-black px-3 py-1 rounded-bl-xl text-xs font-semibold">
+                <div className="absolute top-0 right-0 bg-yellow-500 text-black px-3 py-1 rounded-bl-xl rounded-tr-xl text-xs font-semibold">
                   Most Popular
                 </div>
               )}
@@ -275,7 +275,7 @@ const MembershipPage = () => {
 
         {/* Launch Offer */}
         <div className="mt-20  bg-gradient-to-r from-blue-500 via-purple-500 to-orange-400 px-4 py-10 text-white rounded-2xl shadow-xl space-y-6 w-full max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-bold">🎁 Launch Time Offer (Limited Time)</h2>
+          <h2 className="text-3xl font-bold ">🎁 Launch Time Offer <span className="text-red-600">(Limited Time)</span></h2>
 
           <p className="text-lg py-4 font-semibold">
             “First Month Unlock” – Now at ₹7,499 (Save ₹3,500)
