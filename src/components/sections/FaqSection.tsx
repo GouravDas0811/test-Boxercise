@@ -17,8 +17,8 @@ const faqs: Faq[] = [
     answer: 'Every session is LIVE and 1-on-1 via Google meet or your preferred platform — completely tailored to your fitness level and goals.',
   },
   {
-    question: 'Is it beginner-friendly?',
-    answer: 'Yes — whether you’re new, returning after an injury, or just starting, we design everything to match your level and body.',
+    question: 'Do I need any equipment?',
+    answer: 'Not at all. We start with bodyweight. Your coach will guide you if you need basic tools later in your journey.',
   },
   {
     question: 'Is there a trial membership available?',

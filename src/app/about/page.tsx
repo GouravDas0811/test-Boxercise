@@ -112,7 +112,7 @@ const AboutPage = () => {
                     "Certified and experienced trainers",
                     "Tailored fitness plans",
                     "Supportive community & motivation",
-                    "Only Online sessions available",
+                    "Online sessions available",
                   ].map((step, index) => (
                     <div
                       key={index}
