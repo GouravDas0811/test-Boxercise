@@ -8,7 +8,7 @@ import 'swiper/css';
 
 const testimonials = [
   {
-    name: 'John Doe',
+    name: 'Anisha Kumari',
     feedback: 'The best fitness program I have ever joined! Highly recommend it to anyone serious about results.',
   },
   {
@@ -16,7 +16,7 @@ const testimonials = [
     feedback: 'Amazing coaches, great environment, and visible results in just a few weeks!',
   },
   {
-    name: 'David Johnson',
+    name: 'k. Sidhaart',
     feedback: 'Their personalized training plans really helped me stay consistent and motivated.',
   },
   {

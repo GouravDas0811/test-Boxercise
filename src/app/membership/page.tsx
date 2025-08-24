@@ -82,6 +82,7 @@ const MembershipPage = () => {
       desc: "Perfect for beginners getting started",
       price: pricing.lite,
       features: [
+        "12 sessions per month",
         "1-on-1 live coaching with certified coach",
         "WhatsApp support",
         "Flexible scheduling",
@@ -89,12 +90,14 @@ const MembershipPage = () => {
       btnColor: "bg-white hover:bg-orange-500 text-black font-semibold",
       popular: false,
       icon: "/icons/lite.png",
+      buttonId: "https://rzp.io/rzp/RpWI3PG3"
     },
     {
       title: "Active",
       desc: "Most popular choice for serious fitness",
       price: pricing.active,
       features: [
+        "16 sessions per month",
         "Everything in Lite plan +",
         "Nutrition guidance",
         "Weekly habit tracking",
@@ -102,12 +105,14 @@ const MembershipPage = () => {
       btnColor: "bg-yellow-500 hover:bg-orange-500 text-black font-bold",
       popular: true,
       icon: "/icons/active.png",
+      buttonId: "https://rzp.io/rzp/jg2vZua"
     },
     {
       title: "Elite",
       desc: "Ultimate fitness experience",
       price: pricing.elite,
       features: [
+        "20 sessions per month",
         "Everything in Active plan +",
         "Lifestyle Coaching",
         "Monthly progress report",
@@ -115,6 +120,7 @@ const MembershipPage = () => {
       btnColor: "bg-white hover:bg-orange-500 text-black font-semibold",
       popular: false,
       icon: "/icons/elite.png",
+      buttonId: "https://rzp.io/rzp/zzuxLa5"
     },
   ];
 
@@ -129,6 +135,7 @@ const MembershipPage = () => {
         "Habit tracking + goal reviews",
       ],
       icon: "/icons/3month.png",
+      buttonId: "pl_xxxxx3month"
     },
     {
       title: "6-Month Plan",
@@ -140,6 +147,7 @@ const MembershipPage = () => {
         "Long-term coaching commitment",
       ],
       icon: "/icons/6month.png",
+      buttonId: "pl_xxxxx3month"
     },
   ];
 
@@ -221,11 +229,13 @@ const MembershipPage = () => {
                   </li>
                 ))}
               </ul>
-              <button
-                className={`mt-auto w-full py-2 rounded-lg ${plan.btnColor} cursor-pointer`}
-              >
-                Choose {plan.title}
-              </button>
+             <button
+              onClick={() => window.open(plan.buttonId, "_blank")}
+              className={`mt-auto w-full py-2 rounded-lg ${plan.btnColor} cursor-pointer`}>
+              Choose {plan.title}
+             </button>
+
+
             </motion.div>
           ))}
         </div>
