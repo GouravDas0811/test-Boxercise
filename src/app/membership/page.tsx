@@ -135,7 +135,7 @@ const MembershipPage = () => {
         "Habit tracking + goal reviews",
       ],
       icon: "/icons/3month.png",
-      buttonId: "pl_xxxxx3month"
+      buttonId: "https://rzp.io/rzp/dx4YxzP"
     },
     {
       title: "6-Month Plan",
@@ -147,7 +147,7 @@ const MembershipPage = () => {
         "Long-term coaching commitment",
       ],
       icon: "/icons/6month.png",
-      buttonId: "pl_xxxxx3month"
+      buttonId: "https://rzp.io/rzp/ILVRptP"
     },
   ];
 
@@ -276,7 +276,9 @@ const MembershipPage = () => {
                   </li>
                 ))}
               </ul>
-              <button className="mt-auto w-full py-2 px-4 rounded-lg bg-orange-500 hover:bg-yellow-400 text-black font-semibold text-sm sm:text-base transition-colors duration-300 cursor-pointer">
+              <button 
+              onClick={() => window.open(plan.buttonId, "_blank")}
+              className="mt-auto w-full py-2 px-4 rounded-lg bg-orange-500 hover:bg-yellow-400 text-black font-semibold text-sm sm:text-base transition-colors duration-300 cursor-pointer">
                 Choose Plan
               </button>
             </motion.div>
