@@ -4,9 +4,10 @@ import ServiceSection from '../components/sections/ServiceSection';
 import Testimonial from '../components/sections/Testimonial';
 import FaqSection from '../components/sections/FaqSection'; 
 import LaunchOfferPopup from "../components/LaunchOfferPopup";
+import { connection } from 'next/server'
 // app/page.tsx
-export default function Home() {
-  
+export default async function Home() {
+  await connection()
   return (
    <>
    <Hero/>

@@ -8,6 +8,8 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Toaster } from "react-hot-toast";
 
+export const dynamic = 'force-dynamic'
+
 export const metadata: Metadata = {
   title: 'Boxercise- Train Smart, Evolve Strong',
   description: 'Fitness, Boxing, and Yoga, Nutrition consultancy',
