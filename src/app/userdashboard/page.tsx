@@ -396,36 +396,84 @@ export default function UserDashboardPage() {
     return true;
   };
 
+/* ========== REPLACE THIS FUNCTION ========== */
+
   const handleBooking = async (): Promise<void> => {
     if (!firebaseUser) {
       toast.error("Please sign in to confirm your booking.");
       router.push("/signin");
       return;
     }
+    
+    // We can get the planId from the activePlan state
+    if (!activePlan?.id) {
+       toast.error("You must have an active plan to book a session.");
+       // Optionally, redirect to membership page
+       // router.push("/membership");
+       return;
+    }
+    const planId = activePlan.id;
+
+    // We no longer need a trainerId here.
     if (!category || !selectedDate || !timeSlot) {
-      toast.error("Please complete all selections before booking.");
+      toast.error("Please complete all selections before booking (Category, Date, and Time).");
       return;
     }
 
-    const slotDate = new Date(`${selectedDate} ${timeSlot}`);
+    // Combine date and time into a full ISO string.
+    const timeParts = timeSlot.match(/(\d+):(\d+) (AM|PM)/);
+    if (!timeParts) {
+      toast.error("Invalid time slot format.");
+      return;
+    }
+    
+    const [hoursInit, minutes, ampm] = [parseInt(timeParts[1]), parseInt(timeParts[2]), timeParts[3]];
+    let hours = hoursInit;
+    if (ampm === "PM" && hours !== 12) hours += 12;
+    if (ampm === "AM" && hours === 12) hours = 0; // Midnight case
+    
+    const slotDate = new Date(selectedDate);
+    slotDate.setHours(hours, minutes, 0, 0); // Set time in local timezone
+
+    // Client-side check (still useful for user's own conflicts)
     if (!isSlotBookable(slotDate)) {
-      toast.error("This slot is not available.");
+      toast.error("This slot is not available (either too soon or you are already booked).");
       return;
     }
 
     setSlotLoading(true);
+
     try {
-      await addDoc(collection(db, "bookings"), {
-        userId: firebaseUser.uid,
-        category,
-        sessionAt: slotDate,
-        status: "upcoming",
-        trainer: null,
-        notes: null,
-        createdAt: serverTimestamp(),
+      // 1. Get the user's auth token
+      const token = await firebaseUser.getIdToken();
+
+      // 2. Call YOUR OWN secure backend API
+      const response = await fetch("/api/bookings", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`, // Send the token for verification
+        },
+        body: JSON.stringify({
+          category,
+          planId,
+          // trainerId is no longer sent from the client
+          sessionAt: slotDate.toISOString(), // Send as full ISO string
+        }),
       });
-      toast.success(`🎉 Booking confirmed for ${format(slotDate, "PPP p")}`);
-      setSelectedTab("upcoming");
+
+      // 3. Handle the response from your API
+      if (!response.ok) {
+        const errorData = await response.json();
+        // This will now show our new errors, like "This slot is fully booked..."
+        toast.error(errorData.error || "Booking failed.");
+      } else {
+        // Success!
+        await response.json();
+        toast.success(`🎉 Booking confirmed for ${format(slotDate, "PPP p")}`);
+        setSelectedTab("upcoming");
+      }
+
     } catch (err) {
       console.error("booking error:", err);
       toast.error("Booking failed. Try again.");
@@ -433,6 +481,8 @@ export default function UserDashboardPage() {
       setSlotLoading(false);
     }
   };
+
+  /* ========== END OF REPLACED FUNCTION ========== */
 
   const handleCancel = async (b: Booking) => {
     if (!firebaseUser) return;
